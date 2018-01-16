@@ -14,7 +14,7 @@
     "paths": {
       "@src/*": [ "src/*" ],
       "@utils/*": [ "src/utils/*"],
-      "@commands/*": [ "src/commands/*" ],
+      "@commands": [ "src/commands" ],
       "@utils": [ "src/utils" ],
       "@types": [ "index.d" ]
     }
