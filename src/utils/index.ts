@@ -3,6 +3,19 @@ import { INFO, EmmLogger } from 'emm-logger'
 import * as localUtils from '@utils'
 
 
+export {
+  isFile,
+  isDirectory,
+  findNearestTarget,
+} from './fs-helper'
+
+
+export {
+  splitContentToSourceItems,
+  mergeSourceItemsToContent,
+} from './source-handler'
+
+
 export const logger = new EmmLogger('ws-ts', {
   level: INFO,
 })

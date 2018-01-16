@@ -6,6 +6,12 @@
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@types/chai/-/chai-4.1.0.tgz#d9008fa4c06f6801f93396d121f0227cd4244ac6"
 
+"@types/fs-extra@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/fs-extra/-/fs-extra-5.0.0.tgz#d3e225b35eb5c6d3a5a782c28219df365c781413"
+  dependencies:
+    "@types/node" "*"
+
 "@types/lodash@^4.14.92":
   version "4.14.92"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.92.tgz#6e3cb0b71a1e12180a47a42a744e856c3ae99a57"
@@ -14,7 +20,7 @@
   version "2.2.46"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.46.tgz#b04713f7759d1cf752effdaae7b3969e285ebc16"
 
-"@types/node@^9.3.0":
+"@types/node@*", "@types/node@^9.3.0":
   version "9.3.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-9.3.0.tgz#3a129cda7c4e5df2409702626892cb4b96546dd5"
 
