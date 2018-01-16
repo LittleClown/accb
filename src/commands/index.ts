@@ -2,6 +2,7 @@ import * as path from 'path'
 import * as program from 'commander'
 import _, { logger } from '@utils'
 import { WSTS } from '@types'
+import build from './build'
 
 
 /**
@@ -20,6 +21,32 @@ export default async (version:string, args:any):Promise<void>=> {
 
 
   // sub-command `build`.
+  program
+    .command(`build <target>`)
+    .option('-o, --out <output-directory>', 'index output directory')
+    .option('-f, --file <output-file-name>', 'index output filename')
+    .option('-p, --path <output-path>', 'index output path. It\'s a shortcut of `-o` and `-f`')
+    .option('--rc, --remove-comments', 'remove comments.')
+    .option('--rs, --remove-spaces', 'remove spaces.')
+    .action((target:string, options:any)=> {
+      (async()=> {
+        let cmdArgs = await generateGlobalOptions()
+        cmdArgs.options = {
+          target: target,
+          out: options.out,
+          file: options.file,
+          path: options.path,
+          removeComments: options.removeComments,
+          removeSpaces: options.removeSpaces,
+        }
+
+        logger.debug('cmdArgs:', cmdArgs)
+
+        // exec sub-command `build`.
+        await build(cmdArgs)
+      })()
+    })
+
 
 
   // done.
