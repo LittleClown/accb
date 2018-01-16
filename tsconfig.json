@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": [ "es2015" ],
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "es2015",
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "watch": false,
+    "pretty": false,
+    "baseUrl": ".",
+    "paths": {
+      "@src/*": [ "src/*" ],
+      "@utils/*": [ "src/utils/*"],
+      "@commands/*": [ "src/commands/*" ],
+      "@utils": [ "src/utils" ],
+      "@types": [ "index.d" ]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "accb.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "out"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "name": "accb",
+  "version": "0.1.0",
+  "bin": {
+    "accb": "dist/accb.js"
+  },
+  "scripts": {
+    "run": "ts-node -r tsconfig-paths/register accb.ts",
+    "build": "ws-ts build . --out dist --clean",
+    "dev:watch": "tsc --sourceMap --watch",
+    "exec:ts": "ts-node -r tsconfig-paths/register",
+    "test": "mocha -r ts-node/register -r tsconfig-paths/register",
+    "test:all": "npm run test \"test/**/*test.ts\"",
+    "test:awesome": "npm run test --reporter mochawesome",
+    "test:awesome:all": "npm run test:all --reporter mochawesome",
+    "test:all:awesome": "npm run test:awesome:all"
+  },
+  "description": "acm-cpp-code-build. a cli-tool for build acm/codes.",
+  "main": "index.js",
+  "repository": "git@github.com:LittleClown/accb.git",
+  "author": "lemon clown",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "cli",
+    "acm/codes"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.1.0",
+    "@types/mocha": "^2.2.46",
+    "@types/node": "^9.3.0",
+    "chai": "^4.1.2",
+    "mocha": "^4.1.0",
+    "mochawesome": "^3.0.1",
+    "ts-node": "^4.1.0",
+    "tsconfig-paths": "^2.7.3",
+    "typescript": "^2.6.2"
+  }
+}
