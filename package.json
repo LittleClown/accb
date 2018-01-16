@@ -27,6 +27,7 @@
   ],
   "devDependencies": {
     "@types/chai": "^4.1.0",
+    "@types/lodash": "^4.14.92",
     "@types/mocha": "^2.2.46",
     "@types/node": "^9.3.0",
     "chai": "^4.1.2",
@@ -35,5 +36,9 @@
     "ts-node": "^4.1.0",
     "tsconfig-paths": "^2.7.3",
     "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "emm-logger": "^0.1.5",
+    "lodash": "^4.17.4"
   }
 }
