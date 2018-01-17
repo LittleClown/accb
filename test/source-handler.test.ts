@@ -1,11 +1,11 @@
 import { expect } from 'chai'
-import { quot_regex, generateCommentRegex } from '@utils/source-handler'
+import { generateQuotedRegexSource, generateCommentRegexSource } from '@utils/source-handler'
 
 
-describe('test quot-regex', ()=> {
+describe('test generateQuotedRegexSource', ()=> {
   let regex:RegExp
   before(()=> {
-    regex = new RegExp(`^${quot_regex.source}$`)
+    regex = new RegExp(`^${generateQuotedRegexSource([`'`, `"`])}$`)
   })
 
   it(`expect true cases.`, ()=> {
@@ -21,11 +21,10 @@ describe('test quot-regex', ()=> {
 })
 
 
-describe('test comment-regex', ()=> {
+describe('test generateCommentRegexSource', ()=> {
   let regex:RegExp
   before(()=> {
-    regex = generateCommentRegex(['/*', '*/'], '//')
-    regex = new RegExp(`^${regex.source}$`)
+    regex = new RegExp(`^${generateCommentRegexSource(['/*', '*/'], '//')}$`)
   })
 
   it(`expect true cases.`, ()=> {

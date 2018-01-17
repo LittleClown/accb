@@ -24,6 +24,7 @@ accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--r
 * `--file <out-filename>`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`
 * `--remove-comments`: 删除导出的文件中的注释
 * `--remove-spaces`: 删除导出的文件中的冗余空格
+* `--log-*`: 见 ***[emm-logger](https://www.npmjs.com/package/emm-logger)***
 
 
 如： `accb build 10480.cpp --file A.cpp --remove-comments --remove-spaces`
@@ -33,5 +34,5 @@ accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--r
 
 
 # 说明
-本项目是我自己做着用的，我使用 Clion 编写代码，通过 `cmake` 来管理。
+本项目是我自己做着用的（作为 ***[acm-cpp](https://github.com/LittleClown/acm-cpp)*** 的配套工具），我使用 Clion 编写代码，通过 `cmake` 来管理。
 因此，如果你希望它能正常工作，请先创建一个 C++ 工程，并把你的类库通过 `include_directories` 指定，等等。

@@ -1,14 +1,14 @@
 export declare namespace WSTS {
   export interface SourceItems {
-    quotItems: string[]
-    nonQuotItems: string[]
+    validItems: string[]      //
+    invalidItems: string[]    //
   }
 
 
   export interface CmdArguments {
-    rootDir: string
-    execPath: string
-    cmakeLists: string
-    options?: any
+    rootDir: string           // the cpp project root directory.
+    execPath: string          // the command executed path.
+    cmakeLists: string        // the name of cmake config file such as `CMakeLists.txt`.
+    options?: any             // sub-commands options.
   }
 }

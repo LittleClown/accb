@@ -11,7 +11,10 @@ export {
 
 
 export {
-  splitContentToSourceItems,
+  splitContentToCommentItems,
+  splitContentToQuotedItems,
+  generateCommentRegexSource,
+  generateQuotedRegexSource,
   mergeSourceItemsToContent,
 } from './source-handler'
 
