@@ -4,6 +4,11 @@ import * as localUtils from '@utils'
 
 
 export {
+  parseCMakeLists,
+} from './cmake-lists'
+
+
+export {
   isFile,
   isDirectory,
   findNearestTarget,

@@ -11,4 +11,10 @@ export declare namespace WSTS {
     cmakeLists: string        // the name of cmake config file such as `CMakeLists.txt`.
     options?: any             // sub-commands options.
   }
+
+
+  export interface CMakeLists {
+    include_directories: string[]
+    add_executables: Map<string, string>
+  }
 }

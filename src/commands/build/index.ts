@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra'
 import * as path from 'path'
 import { EmmLogger } from 'emm-logger'
-import _ from '@utils'
+import _, { parseCMakeLists } from '@utils'
 import { WSTS } from '@types'
 import { Cpp } from './cpp'
 import { removeComments, removeSpaces } from './handlers'
@@ -32,7 +32,7 @@ export default async (cmdArgs:WSTS.CmdArguments):Promise<void>=> {
   } = cmdArgs
 
   let { target, outputPath } = options
-  let { include_directories } = await parseCmakeLists(cmakeLists)
+  let { include_directories } = await parseCMakeLists(cmakeLists)
 
   logger.debug('include_directories:', include_directories)
 
@@ -98,32 +98,5 @@ async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
     flags,
     target,
     outputPath: path.resolve(dir, out),
-  }
-}
-
-
-/**
- * parse CMakeLists.txt, get { include_directories }
- * @param {string} cmakeLists
- * @return {Promise<any>}
- */
-async function parseCmakeLists(cmakeLists:string):Promise<any> {
-  let content = await fs.readFile(cmakeLists, 'utf-8')
-  let items = content.split(/\n+/g)
-
-  // parse include_directories
-  const include_directories_regex = /include_directories\((\s*\S+?\s*)\)/g
-  let include_directories:string[] = []
-  for(let item of items) {
-    let result = include_directories_regex.exec(item)
-    if( result ) {
-      let [, include_directory ] = result
-      include_directories.push(include_directory)
-    }
-  }
-
-
-  return {
-    include_directories,
   }
 }
