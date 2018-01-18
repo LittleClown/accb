@@ -15,13 +15,14 @@ npm install -g accb
 
 # 使用
 ```
-accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--rc, --remove-comments] [--rs, --remove-spaces] [-u, --uglify] [--log-level=debug|info|warn|error|fatal] [--log-option=<>]
+accb build <target> [--help] [-o, --out <out-filename>] [-d, --dir <out-directory>] [--rc, --remove-comments] [--rs, --remove-spaces] [-u, --uglify] [--log-level=debug|info|warn|error|fatal] [--log-option=<>]
 ```
 
 ## 参数
 * `target`: 需要生成的源文件
-* `--out <out-directory>`: 导出目录，若不指定，默认为执行命令的当前路径
-* `--file <out-filename>`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`
+* `--help`: 显示帮助信息
+* `--out <out-filename>`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`
+* `--dir <out-directory>`: 导出目录，若不指定，默认为执行命令的当前路径
 * `--remove-comments`: 删除导出的文件中的注释
 * `--remove-spaces`: 删除导出的文件中的冗余空格
 * `--uglify`: `--remove-comments --remove-spaces` 的快捷方式

@@ -71,24 +71,24 @@ export default async (cmdArgs:WSTS.CmdArguments):Promise<void>=> {
  */
 async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
   let { execPath, options } = cmdArgs
-  let { out, file, path:p, target } = options
+  let { out, dir, path:p, target } = options
 
   if( p ) {
     p = path.resolve(execPath, p)
     logger.debug(`indexed --path \`${p}\`.`)
     if( !await _.isFile(p) )
       throw new Error(`${p} isn't a valid file path.`)
-    out = path.dirname(p)
-    file = path.basename(p)
+    dir = path.dirname(p)
+    out = path.basename(p)
   } else {
-    if( !out ) out = execPath
-    out = path.resolve(execPath, out)
-    if( !file ) {
+    if( !dir ) dir = execPath
+    dir = path.resolve(execPath, dir)
+    if( !out ) {
       let ext_name = path.extname(target)
-      file = target.slice(0, target.length-ext_name.length) + '.out' + ext_name
+      out = target.slice(0, target.length-ext_name.length) + '.out' + ext_name
     }
-    if( !await _.isDirectory(out) )
-      throw new Error(`${out} isn't a valid directory.`)
+    if( !await _.isDirectory(dir) )
+      throw new Error(`${dir} isn't a valid directory.`)
   }
 
   let { uglify, removeComments, removeSpaces } = options
@@ -97,7 +97,7 @@ async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
     uglify,
     removeComments,
     removeSpaces,
-    outputPath: path.resolve(out, file),
+    outputPath: path.resolve(dir, out),
   }
 }
 
