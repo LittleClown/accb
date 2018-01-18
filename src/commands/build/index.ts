@@ -40,20 +40,22 @@ export default async (cmdArgs:WSTS.CmdArguments):Promise<void>=> {
   let content = await cpp.buildCpp(target)
 
 
+  let { flags } = options
+
   // checkout uglify
-  if( options.uglify ) {
-    options.removeComments = true
-    options.removeSpaces = true
+  if( flags.uglify ) {
+    flags.removeComments = true
+    flags.removeSpaces = true
   }
 
   // remove comments.
-  if( options.removeComments ) {
+  if( flags.removeComments ) {
     logger.info('removing comment.')
     content = removeComments(content)
   }
 
   // remove spaces.
-  if( options.removeSpaces ) {
+  if( flags.removeSpaces ) {
     logger.info('removing spaces.')
     content = removeSpaces(content)
   }
@@ -91,12 +93,10 @@ async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
       throw new Error(`${dir} isn't a valid directory.`)
   }
 
-  let { uglify, removeComments, removeSpaces } = options
+  let { flags } = options
   cmdArgs.options = {
+    flags,
     target,
-    uglify,
-    removeComments,
-    removeSpaces,
     outputPath: path.resolve(dir, out),
   }
 }

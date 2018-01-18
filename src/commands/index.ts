@@ -37,9 +37,11 @@ export default async (version:string, args:any):Promise<void>=> {
           out: options.out,
           dir: options.dir,
           path: options.path,
-          uglify: options.uglify,
-          removeComments: options.removeComments,
-          removeSpaces: options.removeSpaces,
+          flags: {
+            uglify: options.uglify,
+            removeComments: options.removeComments,
+            removeSpaces: options.removeSpaces,
+          }
         }
 
         logger.debug('cmdArgs:', cmdArgs)
