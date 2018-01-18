@@ -16,8 +16,8 @@ export default async (version:string, args:any):Promise<void>=> {
   // global options.
   program
     .version(version)
-    .option('--log-level')
-    .option('--log-option')
+    .option('--log-level <level>')
+    .option('--log-option <option>')
     .option('--cl, --cmake-lists <cmakeLists-name>', 'index cmakeLists name.')
 
 
@@ -55,12 +55,15 @@ export default async (version:string, args:any):Promise<void>=> {
 
   // sub-command `new`.
   program
-    .command(`new <target>`)
-    .action((target:string, options:any)=> {
+    .command(`new <targets...>`)
+    .option('-t, --template <template-filename>', 'index template file path(the path to the current folder or absolute path')
+    .action((targets:string, options:any)=> {
       (async()=> {
         let cmdArgs = await generateGlobalOptions()
+
         cmdArgs.options = {
-          target: target,
+          targets: targets,
+          template: options.template,
         }
 
         logger.debug('cmdArgs:', cmdArgs)
@@ -82,11 +85,10 @@ export default async (version:string, args:any):Promise<void>=> {
    */
   async function generateGlobalOptions():Promise<WSTS.CmdArguments> {
     let execPath = path.resolve()
-    let cmakeLists = program.cmakeLists || 'CMakeLists.txt'
-
-    cmakeLists = await _.findNearestTarget(execPath, cmakeLists)
+    let cl = program.cmakeLists || 'CMakeLists.txt'
+    let cmakeLists = await _.findNearestTarget(execPath, cl)
     if( !await _.isFile(cmakeLists) ) {
-      logger.fatal(`\`${cmakeLists}\` is not exists.`)
+      logger.fatal(`\`${cl}\` is not exists.`)
       process.exit(-1)
     }
 

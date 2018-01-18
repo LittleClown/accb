@@ -1,9 +1,10 @@
 import * as fs from 'fs-extra'
+import * as path from 'path'
 import { WSTS } from '@types'
 
 
-export const include_directories_regex = /include_directories\((\s*\S+?\s*)\)/g
-export const add_executable_regex = /add_executable\((\S+?)([\s\S]+?)\)/g
+export const include_directories_regex = /^\s*include_directories\((\s*\S+?\s*)\)\s*$/
+export const add_executable_regex = /^\s*add_executable\((\S+?)(\s+[\s\S]+?)\)\s*$/
 
 
 /**
@@ -25,7 +26,6 @@ export async function parseCMakeLists(cmakeLists:string):Promise<WSTS.CMakeLists
     }
   }
 
-
   // parse add_executable
   let add_executables = new Map<string, string>()
   for(let item of items) {
@@ -41,4 +41,19 @@ export async function parseCMakeLists(cmakeLists:string):Promise<WSTS.CMakeLists
     include_directories,
     add_executables,
   }
+}
+
+
+/**
+ * generate a unique executable target name.
+ * @param {Map<string, string>} add_executable
+ * @param {string} source
+ * @return {string}
+ */
+export function generateExecutableTargetName(add_executable:Map<string, string>,
+                                         source:string):string {
+  let { dir:dirname, name:filename } = path.parse(source)
+  let name = dirname.split(/[\\/]/g).map(m=> m[0].toUpperCase()).join('')
+  name = 'P' + name + filename
+  return name
 }

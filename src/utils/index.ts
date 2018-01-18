@@ -5,6 +5,7 @@ import * as localUtils from '@utils'
 
 export {
   parseCMakeLists,
+  generateExecutableTargetName,
 } from './cmake-lists'
 
 
