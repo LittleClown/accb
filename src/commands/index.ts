@@ -3,6 +3,7 @@ import * as program from 'commander'
 import _, { logger } from '@utils'
 import { WSTS } from '@types'
 import build from './build'
+import _new from './new'
 
 
 /**
@@ -51,6 +52,23 @@ export default async (version:string, args:any):Promise<void>=> {
       })()
     })
 
+
+  // sub-command `new`.
+  program
+    .command(`new <target>`)
+    .action((target:string, options:any)=> {
+      (async()=> {
+        let cmdArgs = await generateGlobalOptions()
+        cmdArgs.options = {
+          target: target,
+        }
+
+        logger.debug('cmdArgs:', cmdArgs)
+
+        // exec sub-command `new`.
+        await _new(cmdArgs)
+      })()
+    })
 
 
   // done.
