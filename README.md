@@ -15,7 +15,7 @@ npm install -g accb
 
 # 使用
 ```
-accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--rc, --remove-comments] [--rs, --remove-spaces] [--log-level=debug|info|warn|error|fatal] [--log-option=<>]
+accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--rc, --remove-comments] [--rs, --remove-spaces] [-u, --uglify] [--log-level=debug|info|warn|error|fatal] [--log-option=<>]
 ```
 
 ## 参数
@@ -24,6 +24,7 @@ accb build <target> [-o, --out <out-directory>] [-f, --file <out-filename>] [--r
 * `--file <out-filename>`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`
 * `--remove-comments`: 删除导出的文件中的注释
 * `--remove-spaces`: 删除导出的文件中的冗余空格
+* `--uglify`: `--remove-comments --remove-spaces` 的快捷方式
 * `--log-*`: 见 ***[emm-logger](https://www.npmjs.com/package/emm-logger)***
 
 

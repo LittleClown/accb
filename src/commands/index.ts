@@ -28,6 +28,7 @@ export default async (version:string, args:any):Promise<void>=> {
     .option('-p, --path <output-path>', 'index output path. It\'s a shortcut of `-o` and `-f`')
     .option('--rc, --remove-comments', 'remove comments.')
     .option('--rs, --remove-spaces', 'remove spaces.')
+    .option('-u, --uglify', 'shortcut of --rc --rs.')
     .action((target:string, options:any)=> {
       (async()=> {
         let cmdArgs = await generateGlobalOptions()
@@ -36,6 +37,7 @@ export default async (version:string, args:any):Promise<void>=> {
           out: options.out,
           file: options.file,
           path: options.path,
+          uglify: options.uglify,
           removeComments: options.removeComments,
           removeSpaces: options.removeSpaces,
         }
