@@ -21,12 +21,12 @@ npm install -g accb
 
 # accb build <target>
 ```
-accb build <target> [--help]  [-o, --out <out-filename>] [-d, --dir <out-directory>] [--rc, --remove-comments] [--rs, --remove-spaces] [-u, --uglify]
+accb build <target> [--help]  [-o, --out [out-filename]] [-d, --dir <out-directory>] [--rc, --remove-comments] [--rs, --remove-spaces] [-u, --uglify]
 ```
 
 ## 参数
 * `target`: 需要生成的源文件
-* `--out <out-filename>`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`
+* `--out [out-filename]`: 导出文件名，若不指定，默认为 `target` 的后缀名前加上 `.out`。如 `target=A.cpp` 时，默认导出名为 `A.out.cpp`。若未指定 `-o` 选项，则将内容输出到系统剪切板中
 * `--dir <out-directory>`: 导出目录，若不指定，默认为执行命令的当前路径
 * `--remove-comments`: 删除导出的文件中的注释
 * `--remove-spaces`: 删除导出的文件中的冗余空格

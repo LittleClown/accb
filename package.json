@@ -1,6 +1,6 @@
 {
   "name": "accb",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "bin": {
     "accb": "dist/accb.js"
   },
@@ -27,11 +27,7 @@
   ],
   "devDependencies": {
     "@types/chai": "^4.1.0",
-    "@types/commander": "^2.12.2",
-    "@types/fs-extra": "^5.0.0",
-    "@types/lodash": "^4.14.92",
     "@types/mocha": "^2.2.46",
-    "@types/node": "^9.3.0",
     "chai": "^4.1.2",
     "mocha": "^4.1.0",
     "mochawesome": "^3.0.1",
@@ -40,7 +36,13 @@
     "typescript": "^2.6.2"
   },
   "dependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/copy-paste": "^1.1.30",
+    "@types/fs-extra": "^5.0.0",
+    "@types/lodash": "^4.14.92",
+    "@types/node": "^9.3.0",
     "commander": "^2.13.0",
+    "copy-paste": "^1.3.0",
     "emm-logger": "^0.1.5",
     "fs-extra": "^5.0.0",
     "lodash": "^4.17.4"

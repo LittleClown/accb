@@ -24,7 +24,7 @@ export default async (version:string, args:any):Promise<void>=> {
   // sub-command `build`.
   program
     .command(`build <target>`)
-    .option('-o, --out <output-filename>', 'index output filename')
+    .option('-o, --out [output-filename]', 'index output filename')
     .option('-d, --dir <output-directory>', 'index output directory')
     .option('-p, --path <output-path>', 'index output path. It\'s a shortcut of `-o` and `-f`')
     .option('--rc, --remove-comments', 'remove comments.')

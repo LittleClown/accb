@@ -1,5 +1,6 @@
 import * as fs from 'fs-extra'
 import * as path from 'path'
+import * as cp from 'copy-paste'
 import { EmmLogger } from 'emm-logger'
 import _, { parseCMakeLists } from '@utils'
 import { WSTS } from '@types'
@@ -60,9 +61,17 @@ export default async (cmdArgs:WSTS.CmdArguments):Promise<void>=> {
     content = removeSpaces(content)
   }
 
-  // output
-  logger.info(`write \`${outputPath}\``)
-  await fs.writeFile(outputPath, content, 'utf-8')
+  if( !_.isNil(outputPath) ) {
+    // output
+    logger.info(`write \`${outputPath}\``)
+    await fs.writeFile(outputPath, content, 'utf-8')
+  } else {
+    // copy output in system clip.
+    logger.info(`copying to system-clip.`)
+    await new Promise((resolve) => {
+      cp.copy(content, resolve)
+    })
+  }
 }
 
 
@@ -74,6 +83,7 @@ export default async (cmdArgs:WSTS.CmdArguments):Promise<void>=> {
 async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
   let { execPath, options } = cmdArgs
   let { out, dir, path:p, target } = options
+  let flag = false
 
   if( p ) {
     p = path.resolve(execPath, p)
@@ -82,21 +92,25 @@ async function preproccess(cmdArgs:WSTS.CmdArguments):Promise<void> {
       throw new Error(`${p} isn't a valid file path.`)
     dir = path.dirname(p)
     out = path.basename(p)
+    flag = true
   } else {
-    if( !dir ) dir = execPath
-    dir = path.resolve(execPath, dir)
-    if( !out ) {
-      let ext_name = path.extname(target)
-      out = target.slice(0, target.length-ext_name.length) + '.out' + ext_name
+    if( !_.isNil(out) ) {
+      flag = true
+      if( !dir ) dir = execPath
+      dir = path.resolve(execPath, dir)
+      if( !_.isString(out) ) {
+        let {name, ext} = path.parse(target)
+        out = `${name}.out${ext}`
+      }
+      if( !await _.isDirectory(dir) )
+        throw new Error(`${dir} isn't a valid directory.`)
     }
-    if( !await _.isDirectory(dir) )
-      throw new Error(`${dir} isn't a valid directory.`)
   }
 
   let { flags } = options
   cmdArgs.options = {
     flags,
     target,
-    outputPath: path.resolve(dir, out),
+    outputPath: flag? path.resolve(dir, out): undefined,
   }
 }
