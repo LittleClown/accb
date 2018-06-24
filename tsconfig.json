@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "lib": [ "es2015" ],
+    "outDir": "./dist",
+    "module": "commonjs",
+    "target": "es2015",
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "removeComments": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "watch": false,
+    "pretty": true,
+    "baseUrl": ".",
+    "paths": {
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts",
+    "accb.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

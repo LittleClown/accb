@@ -1,0 +1,41 @@
+{
+  "name": "accb",
+  "version": "0.3.0",
+  "bin": {
+    "accb": "dist/accb.js"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -r ts-node/register -r tsconfig-paths/register --exit",
+    "test:all": "npm run test \"test/**/*.test.ts\""
+  },
+  "description": "acm-cpp-code-build. a cli-tool for build acm/codes.",
+  "main": "index.js",
+  "repository": "git@github.com:LittleClown/accb.git",
+  "author": "lemon clown",
+  "license": "MIT",
+  "keywords": [
+    "typescript",
+    "cli",
+    "acm/codes"
+  ],
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.3",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "ts-node": "^7.0.0",
+    "tsconfig-paths": "^3.4.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "@types/copy-paste": "^1.1.30",
+    "@types/fs-extra": "^5.0.3",
+    "@types/lodash": "^4.14.110",
+    "@types/node": "^10.3.5",
+    "colorful-chalk-logger": "^0.2.4",
+    "commander": "^2.15.1",
+    "copy-paste": "^1.3.0",
+    "fs-extra": "^6.0.1",
+    "lodash": "^4.17.10"
+  }
+}
